@@ -1,0 +1,21 @@
+version: '3'
+services:
+  api:
+    build: .
+    environment:
+      - PORT=5000
+      - FLASK_ENV=production
+    ports:
+      - "8080:5000"
+    restart: unless-stopped
+
+  api-dev:
+    build: .
+    environment:
+      - PORT=5000
+      - FLASK_ENV=dev
+    ports:
+      - "8081:5000"
+    volumes:
+      - ./:/app
+    restart: unless-stopped
