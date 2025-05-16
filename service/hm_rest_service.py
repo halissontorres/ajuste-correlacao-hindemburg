@@ -6,6 +6,28 @@ from flask import Flask, request, jsonify, send_file
 from graphics.hm_correlation_plotter import HMCorrelationPlotter
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
+
+@app.route("/")
+def index():
+    endpoints = {
+        "/plot": {
+            "método": "POST",
+            "descrição": "Gera um gráfico de correlação a partir de um arquivo CSV",
+            "parâmetros": {
+                "file": "Arquivo CSV (obrigatório)",
+                "x_col": "Coluna para o eixo X (obrigatório)",
+                "y_col": "Coluna para o eixo Y (obrigatório)",
+                "filter_condition": "Condição de filtro (opcional)",
+                "x_label": "Rótulo do eixo X (opcional)",
+                "y_label": "Rótulo do eixo Y (opcional)",
+                "title": "Título do gráfico (opcional)",
+                "figsize": "Tamanho da figura (opcional, formato: 'largura,altura')"
+            }
+        }
+    }
+    return jsonify({"endpoints_disponíveis": endpoints}), 200
+
 
 @app.route("/plot", methods=["POST"])
 def generate_plot():
@@ -19,7 +41,7 @@ def generate_plot():
     try:
         df = pd.read_csv(file)
     except Exception as e:
-        return jsonify({"error": f"Failed to read CSV: {str(e)}"}), 400
+        return jsonify({"error": f"Falha ao ler o arquivo CSV: {str(e)}"}), 400
 
     x_col = request.form.get("x_col")
     y_col = request.form.get("y_col")
@@ -59,6 +81,7 @@ def generate_plot():
         return send_file(buf, mimetype="image/png", download_name="correlacao_hm.png")
     except Exception as e:
         return jsonify({"error": f"Houve um erro ao tentar atender à solicitação: {str(e)}"}), 500
+
 
 if __name__ == "__main__":
     app.run(debug=True)

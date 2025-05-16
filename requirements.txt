@@ -1,0 +1,13 @@
+matplotlib
+seaborn
+pandas
+numpy
+scipy
+Flask
+click
+jinja2
+werkzeug
+pillow
+pyparsing
+pytz
+six
