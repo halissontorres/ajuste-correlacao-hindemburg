@@ -31,26 +31,22 @@ Demonstrar, com dados simulados, a aplicação da **fórmula HM** para correçã
   - Amostras restritas
   - Efeito do ruído
 
-## 📈 Exemplos de Gráficos
+## 📈 Exemplos de Gráfico
 
-Três amostras comparadas:
 
-1. Crianças com altura < 1.20 m
-2. Altura < 1.10 m (mais restrita)
-3. Altura < 1.10 m + ruído adicional
-
-A correlação aparente cai drasticamente, mas a fórmula HM recupera o valor real com precisão.
+[Aqui](assets/README.md), a correlação aparente cai drasticamente, mas a fórmula HM recupera o valor real com precisão.
 
 ## 📦 Arquivos incluídos
 
-- `correcao_hm_grafico.py` – Script Python
-- `dados.csv` – Dados simulados para teste
-- `README.md` – Este arquivo
+- [hm_correlation.py](core/hm_correlation.py) – Script de correlação
+- [hm_correlation_plotter.py](graphics/hm_correlation_plotter.py) - Script plotar gráfico
+- [hm_rest_service.py](service/hm_rest_service.py) - Serviço rest
+- [dados.csv](assets/dados.csv) - Dados simulados para teste
 
 ## 🧠 Créditos
 
-- **Artigo e Fórmula Original**: Hindemburg Melão Jr. - [SSRN ID 5237520](https://ssrn.com/abstract=5237520)  .  
-- **Há trechos de códigos, sugeridos ou aperfeiçoados por IA**pt)
+- **Artigo e Fórmula Original**: Hindemburg Melão Jr. - [SSRN ID 5237520](https://ssrn.com/abstract=5237520).  
+- **Há trechos de códigos, sugeridos ou aperfeiçoados por IA**
 
 ## 📄 Licença
 
